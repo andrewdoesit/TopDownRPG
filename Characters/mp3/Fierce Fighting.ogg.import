@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bxdyt4c4sdrmw"
+path="res://.godot/imported/Fierce Fighting.ogg-e807c30672f7f26a4a87bfd571f2feda.oggvorbisstr"
+
+[deps]
+
+source_file="res://Art/mp3/Fierce Fighting.ogg"
+dest_files=["res://.godot/imported/Fierce Fighting.ogg-e807c30672f7f26a4a87bfd571f2feda.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
