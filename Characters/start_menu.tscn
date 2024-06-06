@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://dasns6jq5ktfw"]
+
+[ext_resource type="Script" path="res://Characters/start_menu.gd" id="1_1w8j5"]
+[ext_resource type="Texture2D" uid="uid://dix5lqbh05blv" path="res://Art/Backgrounds/dungeon background 1.png" id="2_o75w6"]
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -838.0
+offset_bottom = -453.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1w8j5")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 758.0
+offset_bottom = 394.0
+scale = Vector2(1.12815, 1.12811)
+texture = ExtResource("2_o75w6")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 365.0
+offset_top = 167.0
+offset_right = 501.0
+offset_bottom = 321.0
+scale = Vector2(1.00741, 1.25005)
+
+[node name="Resume" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="Inventory" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Inventory"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="VBoxContainer/Inventory" to="." method="_on_inventory_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

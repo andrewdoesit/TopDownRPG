@@ -1,0 +1,143 @@
+[gd_scene load_steps=4 format=3 uid="uid://0ypmw2qt2kv8"]
+
+[ext_resource type="Script" path="res://Characters/Inventory/inventory_slot.gd" id="1_ymidc"]
+[ext_resource type="Texture2D" uid="uid://bpl1u38ug8d5y" path="res://Art/Item_Borders/Dragonbun-ItemBorder11.png" id="2_v4mw3"]
+[ext_resource type="FontFile" uid="uid://crhx82rive1nu" path="res://Art/Peaberry Doublespace/PeaberryDoublespace.ttf" id="4_omjrn"]
+
+[node name="Inventory_Slot" type="Control"]
+custom_minimum_size = Vector2(125, 125)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 13.0
+offset_top = 11.0
+offset_right = 144.0
+offset_bottom = 136.0
+scale = Vector2(0.906661, 0.927464)
+script = ExtResource("1_ymidc")
+
+[node name="ItemBorderPurp" type="Sprite2D" parent="."]
+position = Vector2(62.0631, 59.5075)
+scale = Vector2(0.491163, 0.435292)
+texture = ExtResource("2_v4mw3")
+
+[node name="ItemButton" type="Button" parent="ItemBorderPurp"]
+anchors_preset = -1
+anchor_left = 0.0463759
+anchor_top = 0.0653145
+anchor_right = 0.958376
+anchor_bottom = 0.973314
+offset_left = -125.594
+offset_top = -134.329
+offset_right = -125.594
+offset_bottom = -134.329
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Quantity" type="Label" parent="ItemBorderPurp"]
+offset_left = -99.1387
+offset_top = -102.324
+offset_right = -59.1387
+offset_bottom = -79.3239
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_omjrn")
+theme_override_font_sizes/font_size = 70
+text = "1"
+
+[node name="ItemIcon" type="Sprite2D" parent="ItemBorderPurp"]
+position = Vector2(-0.606728, 8.19617)
+scale = Vector2(8.98234, 8.20499)
+
+[node name="DetailsPanel" type="ColorRect" parent="."]
+visible = false
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 0
+offset_left = 14.0
+offset_top = -230.0
+offset_right = 417.0
+offset_bottom = 2.0
+color = Color(0, 0.512991, 0.514241, 1)
+
+[node name="ItemName" type="Label" parent="DetailsPanel"]
+layout_mode = 1
+offset_right = 152.0
+offset_bottom = 94.0
+scale = Vector2(0.400002, 0.4)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_omjrn")
+theme_override_font_sizes/font_size = 47
+text = "Name"
+
+[node name="ItemType" type="Label" parent="DetailsPanel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.0
+offset_right = 21.0
+offset_bottom = -3.0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_omjrn")
+theme_override_font_sizes/font_size = 25
+text = "Type"
+
+[node name="ItemEffect" type="Label" parent="DetailsPanel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -19.0
+offset_right = 44.0
+offset_bottom = -7.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_omjrn")
+theme_override_font_sizes/font_size = 21
+text = "Effect"
+
+[node name="UsagePanel" type="ColorRect" parent="."]
+visible = false
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 0
+offset_left = 7.0
+offset_top = -266.0
+offset_right = 294.0
+offset_bottom = 3.0
+color = Color(0, 0.512991, 0.514241, 1)
+
+[node name="UseButton" type="Button" parent="UsagePanel"]
+layout_mode = 0
+offset_left = 13.0
+offset_right = 281.0
+offset_bottom = 75.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_omjrn")
+theme_override_font_sizes/font_size = 49
+text = "Use"
+
+[node name="DropButton" type="Button" parent="UsagePanel"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 81.0
+offset_right = 279.0
+offset_bottom = 152.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+text = "Drop"
+
+[node name="AssignButton" type="Button" parent="UsagePanel"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 159.0
+offset_right = 280.0
+offset_bottom = 247.0
+theme_override_font_sizes/font_size = 40
+text = "Assign"
+
+[connection signal="gui_input" from="ItemBorderPurp/ItemButton" to="." method="_on_item_button_gui_input"]
+[connection signal="mouse_entered" from="ItemBorderPurp/ItemButton" to="." method="_on_item_button_mouse_entered"]
+[connection signal="mouse_exited" from="ItemBorderPurp/ItemButton" to="." method="_on_item_button_mouse_exited"]
+[connection signal="pressed" from="UsagePanel/UseButton" to="." method="_on_use_button_pressed"]
+[connection signal="pressed" from="UsagePanel/DropButton" to="." method="_on_drop_button_pressed"]
+[connection signal="pressed" from="UsagePanel/AssignButton" to="." method="_on_assign_button_pressed"]

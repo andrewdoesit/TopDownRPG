@@ -1,0 +1,21 @@
+{
+	"Mushroom One": {
+		"ItemCategory": "Resource",
+		"StackSize": 99,
+		"Desciption": "The first mushroom"
+	},
+	"Mushroom Two": {
+		"ItemCategory": "Consumable",
+		"AddHealth": 5,
+		"AddEnergy": 32,
+		"StackSize": 99,
+		"Desciption": "It smells like Poop"
+	},
+	"Mushroom Three": {
+		"ItemCategory": "Weapon",
+		"ItemAttack": 3,
+		"ItemSpeed": 0.75,
+		"StackSize": 1,
+		"Desciption": "It smells like Poop"
+	}
+}

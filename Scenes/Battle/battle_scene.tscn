@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtnjck0crhldf"]
+
+[ext_resource type="Texture2D" uid="uid://dix5lqbh05blv" path="res://Art/Backgrounds/dungeon background 1.png" id="1_lgk3y"]
+[ext_resource type="Script" path="res://Scenes/Battle/battle_scene.gd" id="1_vhni7"]
+[ext_resource type="Texture2D" uid="uid://ke2w8he7pgl6" path="res://Art/full_art/warrior_woman_01.png" id="2_6onea"]
+[ext_resource type="AudioStream" uid="uid://bxdyt4c4sdrmw" path="res://Art/mp3/Fierce Fighting.ogg" id="3_usj1q"]
+[ext_resource type="FontFile" uid="uid://bc0va376ya7hm" path="res://Art/Peaberry Doublespace/Peaberry-Doublespace.otf" id="4_18skw"]
+
+[node name="BattleScene" type="Node2D"]
+script = ExtResource("1_vhni7")
+
+[node name="DungeonBackground1" type="Sprite2D" parent="."]
+position = Vector2(575.5, 340)
+texture = ExtResource("1_lgk3y")
+
+[node name="WarriorWoman01" type="Sprite2D" parent="."]
+position = Vector2(507, 348)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_6onea")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(582, 351)
+zoom = Vector2(0.25, 0.25)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_usj1q")
+volume_db = 6.559
+autoplay = true
+
+[node name="Button" type="Button" parent="."]
+offset_left = 853.0
+offset_top = 18.0
+offset_right = 1128.0
+offset_bottom = 146.0
+theme_override_fonts/font = ExtResource("4_18skw")
+theme_override_font_sizes/font_size = 46
+text = "Run Away"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

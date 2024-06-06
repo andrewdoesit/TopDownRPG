@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkqaihlu5d4gq"]
+
+[ext_resource type="Script" path="res://Items/item_spawner.gd" id="1_cuj5v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dvrik"]
+size = Vector2(1023, 501.5)
+
+[node name="ItemSpawner" type="Node2D"]
+script = ExtResource("1_cuj5v")
+
+[node name="SpawnArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnArea"]
+position = Vector2(0, -14.25)
+shape = SubResource("RectangleShape2D_dvrik")

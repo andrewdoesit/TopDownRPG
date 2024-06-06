@@ -1,0 +1,165 @@
+[gd_scene load_steps=13 format=3 uid="uid://d2eiyo1s5les7"]
+
+[ext_resource type="Texture2D" uid="uid://c8whqlhlgarnf" path="res://Art/adventure/spr_alex.png" id="1_v11dq"]
+[ext_resource type="Script" path="res://Characters/character_alex.gd" id="1_xu56i"]
+[ext_resource type="FontFile" uid="uid://crhx82rive1nu" path="res://Art/Peaberry Doublespace/PeaberryDoublespace.ttf" id="3_8b84w"]
+[ext_resource type="PackedScene" uid="uid://doquuvnpghd4q" path="res://Characters/Inventory/inventory.tscn" id="4_nqk71"]
+[ext_resource type="PackedScene" uid="uid://txu3oe3tpqt2" path="res://Characters/Inventory/inventory_hotbar.tscn" id="5_orbgu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2j02p"]
+size = Vector2(16, 21)
+
+[sub_resource type="Animation" id="Animation_n761i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_850iv"]
+resource_name = "walk_down"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_c1ef0"]
+resource_name = "walk_left"
+length = 0.35
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_1r2ig"]
+resource_name = "walk_right"
+length = 0.35
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_f6ybr"]
+resource_name = "walk_up"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aug7g"]
+_data = {
+"RESET": SubResource("Animation_n761i"),
+"walk_down": SubResource("Animation_850iv"),
+"walk_left": SubResource("Animation_c1ef0"),
+"walk_right": SubResource("Animation_1r2ig"),
+"walk_up": SubResource("Animation_f6ybr")
+}
+
+[node name="CharacterAlex" type="CharacterBody2D" groups=["Player"]]
+process_mode = 3
+scale = Vector2(0.5, 0.5)
+slide_on_ceiling = false
+script = ExtResource("1_xu56i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_v11dq")
+hframes = 4
+vframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_2j02p")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_aug7g")
+}
+
+[node name="InventoryUI" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="InventoryUI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0472317, 0.165448, 0.146869, 1)
+
+[node name="Inventory" parent="InventoryUI/ColorRect" instance=ExtResource("4_nqk71")]
+offset_left = 216.0
+offset_top = 89.0
+offset_right = 216.0
+offset_bottom = 89.0
+
+[node name="Label" type="Label" parent="InventoryUI/ColorRect"]
+z_as_relative = false
+layout_mode = 0
+offset_left = 24.0
+offset_top = 56.0
+offset_right = 103.0
+offset_bottom = 73.0
+theme_override_fonts/font = ExtResource("3_8b84w")
+theme_override_font_sizes/font_size = 13
+text = "Inventory"
+
+[node name="InventoryHotbar" type="CanvasLayer" parent="."]
+scale = Vector2(0.5, 0.5)
+transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
+
+[node name="Inventory_Hotbar" parent="InventoryHotbar" instance=ExtResource("5_orbgu")]
+anchors_preset = -1
+anchor_left = 1.0
+offset_top = 227.0
+offset_bottom = 227.0
+grow_horizontal = 0
+scale = Vector2(0.5, 0.5)
